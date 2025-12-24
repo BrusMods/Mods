@@ -1,0 +1,80 @@
+--[[
+  Menú visual estilo BRUSMODS
+  Fondo negro, partículas rojas, botones transparentes con borde rojo
+  Solo visual, sin funcionalidad real
+]]
+
+-- Crear ventana/menu
+local menu = createUI("BRUSMODS Menu")
+menu:setSize(800, 600)
+menu:setBackgroundColor(0, 0, 0, 180) -- fondo negro semitransparente
+
+-- Función para partículas rojas en fondo
+local particles = {}
+for i = 1, 120 do
+    table.insert(particles, {
+        x = math.random(0, 800),
+        y = math.random(0, 600),
+        vx = math.random() * 2 - 1,
+        vy = math.random() * 2 - 1,
+        life = math.random(50, 150)
+    })
+end
+
+function menu:onDraw()
+    -- Dibujar partículas
+    for i, p in ipairs(particles) do
+        drawCircle(p.x, p.y, 2, {1,0,0,1}) -- rojo
+        p.x = p.x + p.vx
+        p.y = p.y + p.vy
+        p.life = p.life - 1
+        if p.life <= 0 or p.x < 0 or p.x > 800 or p.y < 0 or p.y > 600 then
+            p.x = math.random(0, 800)
+            p.y = math.random(0, 600)
+            p.life = math.random(50, 150)
+            p.vx = math.random() * 2 - 1
+            p.vy = math.random() * 2 - 1
+        end
+    end
+end
+
+-- Crear pestañas
+local tabs = {"Inicio", "Mods VIP", "Herramientas", "Canal WhatsApp"}
+local currentTab = "Inicio"
+
+for _, tabName in ipairs(tabs) do
+    menu:addButton(tabName, function()
+        currentTab = tabName
+    end)
+end
+
+-- Crear botones dentro de cada tab (solo visual)
+local buttons = {
+    ["Inicio"] = {"Ver Mods"},
+    ["Mods VIP"] = {"Entrar"},
+    ["Herramientas"] = {"Ver"},
+    ["Canal WhatsApp"] = {"Canal"}
+}
+
+menu:onUpdate(function()
+    -- dibujar botones del tab actual
+    local y = 200
+    for _, btnName in ipairs(buttons[currentTab] or {}) do
+        drawButton(btnName, 300, y, 200, 50, {0,0,0,0}, {1,0,0,1}) -- fondo transparente, borde rojo
+        y = y + 70
+    end
+end)
+
+-- Botón de música (solo visual)
+menu:addButton("Música: ON", function()
+    -- solo cambia el texto, no reproduce música
+    local btn = menu:getButton("Música: ON") or menu:getButton("Música: OFF")
+    if btn.text == "Música: ON" then
+        btn.text = "Música: OFF"
+    else
+        btn.text = "Música: ON"
+    end
+end)
+
+-- Mostrar menú
+menu:show()
