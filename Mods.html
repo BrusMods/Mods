@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRUSMODS - Mods VIP</title>
+<meta name="theme-color" content="#7f1d1d">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box;font-family:'Poppins',system-ui;}
+body{margin:0;background:radial-gradient(circle at top, #7f1d1d, #000);color:#fff;overflow-x:hidden;}
+canvas{position:fixed;inset:0;z-index:0;}
+header{background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:15px 20px;position:relative;z-index:2;border-bottom:1px solid rgba(255,0,51,.25);display:flex;align-items:center;justify-content:space-between;}
+.top{display:flex;align-items:center;gap:14px;}
+.top img{height:55px;}
+.brand{font-size:23px;font-weight:700;}
+.menu-btn{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;height:22px;width:28px;}
+.menu-btn span{display:block;height:3px;width:100%;background:#ff0033;border-radius:2px;}
+.side-menu{position:fixed;top:0;right:-260px;width:260px;height:100vh;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);padding:25px;z-index:5;transition:.35s ease;border-left:1px solid rgba(255,0,51,.3);}
+.side-menu.active{right:0;}
+.side-menu h3{color:#ff0033;margin-bottom:20px;}
+.side-menu a{display:block;color:#fff;text-decoration:none;margin:15px 0;font-weight:500;}
+.side-menu a:hover{color:#ff0033;}
+.close-menu{position:absolute;top:15px;right:15px;background:none;border:none;color:#ff0033;font-size:26px;font-weight:700;cursor:pointer;}
+.close-menu:hover{transform:scale(1.1);}
+.hero{position:relative;z-index:2;text-align:center;padding:60px 20px 40px;}
+.hero h1{color:#ff0033;font-size:28px;}
+.hero p{color:#ddd;max-width:500px;margin:10px auto 30px;}
+.btn-neon{padding:15px 26px;border-radius:14px;border:2px solid #ff0033;background:transparent;color:#ff0033;font-size:15px;font-weight:600;cursor:pointer;transition:.3s;display:inline-block;text-decoration:none;}
+.btn-neon:hover{color:#fff;box-shadow:0 0 20px #ff0033,0 0 40px #ff0033;}
+.section{position:relative;z-index:2;max-width:1000px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.card{background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border-radius:18px;padding:25px;border:1px solid rgba(255,0,51,.25);text-align:center;}
+footer{text-align:center;padding:25px;font-size:12px;color:#ffb3b3;opacity:.8;position:relative;z-index:2;}
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:999;flex-direction:column;}
+.loader-container{width:300px;text-align:center;}
+.loader-bar{width:0%;height:8px;background:linear-gradient(90deg,#ff0033,#ff66aa);border-radius:4px;box-shadow:0 0 10px #ff0033,0 0 20px #ff66aa;transition:width 0.1s linear;}
+.loader-text{color:#fff;margin-top:12px;font-size:16px;font-weight:700;letter-spacing:1px;text-shadow:0 0 5px #ff0033,0 0 10px #ff66aa;}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="top">
+    <img src="logo.png" alt="Logo BrusMods">
+    <span class="brand">BrusMods</span>
+  </div>
+  <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-menu" id="closeMenu">✖</button>
+  <h3>⚙️ Menú</h3>
+  <a href="index.html">Inicio</a>
+  <a href="mods.html">Mods VIP</a>
+  <a href="herramientas.html">Herramientas</a>
+  <a href="https://youtube.com/@brusmodsofficial?si=hx9adMKreSravTNT">Canal</a>
+</div>
+
+<section class="hero">
+  <h1>🔥 Mods VIP</h1>
+  <p>Acceso a todos los mods premium con estilo BRUSMODS.</p>
+  <a href="https://brusmods.github.io/En-mantenimiento-/" class="btn-neon">Entrar a Mods</a>
+</section>
+
+<section class="section">
+  <div class="card">
+    <h3>MOD 1</h3>
+    <p>Descripción del mod 1.</p>
+    <a href="#" class="btn-neon">Descargar</a>
+  </div>
+  <div class="card">
+    <h3>MOD 2</h3>
+    <p>Descripción del mod 2.</p>
+    <a href="#" class="btn-neon">Descargar</a>
+  </div>
+  <div class="card">
+    <h3>MOD 3</h3>
+    <p>Descripción del mod 3.</p>
+    <a href="#" class="btn-neon">Descargar</a>
+  </div>
+</section>
+
+<footer>© 2025 BRUSMODS</footer>
+
+<div id="loader">
+  <div class="loader-container">
+    <div class="loader-bar"></div>
+    <div class="loader-text">Cargando...</div>
+  </div>
+</div>
+
+<script>
+/* MENÚ LATERAL */
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const closeMenu = document.getElementById("closeMenu");
+menuBtn.addEventListener("click", ()=>{sideMenu.classList.add("active");});
+closeMenu.addEventListener("click", ()=>{sideMenu.classList.remove("active");});
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let sparks=[];
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+addEventListener("resize",resize);
+resize();
+for(let i=0;i<120;i++){sparks.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*3,vy:(Math.random()-.5)*3,life:Math.random()*100});}
+function animate(){ctx.fillStyle="rgba(0,0,0,.15)";ctx.fillRect(0,0,canvas.width,canvas.height);sparks.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.life--;if(s.life<=0){s.x=Math.random()*canvas.width;s.y=Math.random()*canvas.height;s.life=100;}ctx.fillStyle="#ff0033";ctx.fillRect(s.x,s.y,2,2);});requestAnimationFrame(animate);}
+animate();
+
+/* LOADER */
+const buttons = document.querySelectorAll('.btn-neon');
+const loader = document.getElementById('loader');
+const loaderBar = loader.querySelector('.loader-bar');
+buttons.forEach(btn => {
+  btn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const url = btn.getAttribute('href');
+    loader.style.display = 'flex';
+    loaderBar.style.width = '0%';
+    let width = 0;
+    const interval = setInterval(()=>{
+      width += 1;
+      loaderBar.style.width = width + '%';
+      if(width >= 100){clearInterval(interval);window.location.href = url;}
+    }, 25);
+  });
+});
+
+/* OCULTAR LOADER */
+function hideLoader(){loader.style.display='none';loaderBar.style.width='0%';}
+window.addEventListener('DOMContentLoaded', hideLoader);
+window.addEventListener('pageshow',(e)=>{if(e.persisted) hideLoader();});
+</script>
+
+</body>
+</html>
