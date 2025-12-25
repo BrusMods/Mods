@@ -13,38 +13,51 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Aquí pones tu imagen de fondo con la onda púrpura */
-            background-image: url('tu-fondo.jpg'); /* ← Cambia por tu imagen */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #000; /* Fondo negro base */
         }
 
         dialog {
-            background: transparent; /* Totalmente transparente */
+            background: transparent;
             border: none;
             border-radius: 20px;
-            padding: 20px; /* Espacio para que el glow no se corte */
+            padding: 0;
             width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 50px rgba(138, 43, 226, 1); /* Glow/contorno púrpura fuerte */
-            overflow: visible;
-            color: white;
+            box-shadow: 0 0 50px rgba(138, 43, 226, 1); /* Glow púrpura neon contorno */
+            overflow: hidden;
         }
 
         dialog::backdrop {
-            background-color: rgba(0, 0, 0, 0.6); /* Oscurece el fondo detrás */
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-background {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('fondo-modal.png'); /* ← TU IMAGEN DE LA ONDA PÚRPURA AQUÍ */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Ajusta si quieres más o menos visible */
+            z-index: 1;
         }
 
         .modal-content {
-            background: transparent; /* Sin fondo sólido */
+            position: relative;
+            z-index: 2;
+            padding: 20px;
         }
 
         .modal-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding-bottom: 10px;
         }
 
         .modal-header img {
@@ -69,27 +82,25 @@
         }
 
         .changes {
-            background-color: rgba(30, 30, 40, 0.6);
+            background-color: rgba(34, 34, 34, 0.7);
             margin: 20px 0;
             padding: 15px 20px;
             border-radius: 12px;
             font-size: 18px;
-            backdrop-filter: blur(5px); /* Efecto vidrio esmerilado opcional */
         }
 
         .changes li {
-            margin: 8px 0;
+            margin: 10px 0;
         }
 
         .description {
-            background-color: rgba(20, 20, 30, 0.6);
+            background-color: rgba(26, 26, 26, 0.7);
             margin: 20px 0;
             padding: 20px;
             border-radius: 12px;
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.5;
             text-align: center;
-            backdrop-filter: blur(5px);
         }
 
         .buttons {
@@ -99,7 +110,7 @@
         }
 
         .buttons button {
-            padding: 12px 32px;
+            padding: 12px 35px;
             font-size: 18px;
             border: none;
             border-radius: 30px;
@@ -132,29 +143,32 @@
 <body>
 
     <dialog id="updateModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="logo.png" alt="Logo">
-                <div>
-                    <h1>UPDATE AVAILABLE</h1>
-                    <p>New Version 2.0</p>
+        <div class="modal-wrapper">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="logo.png" alt="Logo"> <!-- Tu logo anime -->
+                    <div>
+                        <h1>UPDATE AVAILABLE</h1>
+                        <p>New Version 2.0</p>
+                    </div>
                 </div>
-            </div>
 
-            <ul class="changes">
-                <li>• Fixed Bugs</li>
-                <li>• Enhanced Features</li>
-            </ul>
+                <ul class="changes">
+                    <li>• Fixed Bugs</li>
+                    <li>• Enhanced Features</li>
+                </ul>
 
-            <div class="description">
-                A mandatory new version is available with<br>
-                enhanced security, improved performance,<br>
-                and important fixes.
-            </div>
+                <div class="description">
+                    A mandatory new version is available with<br>
+                    enhanced security, improved performance,<br>
+                    and important fixes.
+                </div>
 
-            <div class="buttons">
-                <button class="later" onclick="document.getElementById('updateModal').close()">LATER</button>
-                <button class="update" onclick="alert('Actualizando...');">UPDATE</button>
+                <div class="buttons">
+                    <button class="later" onclick="document.getElementById('updateModal').close()">LATER</button>
+                    <button class="update" onclick="alert('Actualizando...');">UPDATE</button>
+                </div>
             </div>
         </div>
     </dialog>
