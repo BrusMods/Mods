@@ -20,12 +20,13 @@
         dialog {
             background: transparent;
             border: none;
-            border-radius: 28px;
+            border-radius: 30px;
             padding: 0;
-            width: 420px;
-            max-width: 90%;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 1);
+            width: 380px; /* Más compacto y cuadrado como en tu imagen */
+            max-width: 95%;
+            box-shadow: 0 0 70px rgba(255, 0, 0, 1);
             overflow: hidden;
+            height: auto; /* No fuerza altura, se adapta al contenido */
         }
 
         dialog::backdrop {
@@ -34,16 +35,16 @@
 
         .modal-wrapper {
             position: relative;
-            border-radius: 28px;
+            border-radius: 30px;
             overflow: hidden;
         }
 
         .modal-background {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('fondo-modal.png'); /* Tu onda roja */
-            background-size: contain; /* ← Ahora NO se estira, mantiene proporción */
-            background-position: center center; /* Centrada perfecta */
+            background-image: url('fondo-modal.png');
+            background-size: contain;
+            background-position: center center;
             background-repeat: no-repeat;
             opacity: 1;
             z-index: 1;
@@ -52,19 +53,19 @@
         .modal-content {
             position: relative;
             z-index: 2;
-            padding: 30px 25px;
+            padding: 25px 20px 30px; /* Menos padding vertical para que no se estire */
         }
 
         .modal-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .modal-header img {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             border: 4px solid #ff0000;
             box-shadow: 0 0 20px #ff0000;
@@ -72,40 +73,40 @@
 
         .modal-header h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             color: #ff0000;
             text-shadow: 0 0 15px #ff0000;
         }
 
         .modal-header p {
-            margin: 8px 0 0;
-            font-size: 20px;
+            margin: 5px 0 0;
+            font-size: 18px;
             font-weight: 500;
             color: #ffffff;
         }
 
         .changes {
             background-color: rgba(20, 20, 20, 0.8);
-            margin: 20px 0;
-            padding: 20px;
+            margin: 15px 0;
+            padding: 18px 20px;
             border-radius: 20px;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 500;
             color: #dddddd;
             border: 3px solid white;
         }
 
         .changes li {
-            margin: 12px 0;
+            margin: 10px 0;
         }
 
         .description {
             background-color: rgba(20, 20, 20, 0.8);
-            margin: 30px 0 20px;
-            padding: 25px;
+            margin: 20px 0 25px;
+            padding: 20px;
             border-radius: 20px;
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.6;
             text-align: center;
             font-weight: 400;
@@ -115,13 +116,13 @@
 
         .buttons {
             display: flex;
-            justify-content: space-around;
-            padding-top: 10px;
+            justify-content: space-between;
+            padding-top: 5px;
         }
 
         .buttons button {
-            padding: 14px 40px;
-            font-size: 20px;
+            padding: 12px 35px;
+            font-size: 19px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
