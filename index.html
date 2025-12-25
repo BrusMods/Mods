@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Available Modal - Rojo Neon</title>
-    <!-- Orbitron para vibe futurista -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
@@ -25,7 +24,7 @@
             padding: 0;
             width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 1); /* Glow rojo neon */
+            box-shadow: 0 0 60px rgba(255, 0, 0, 1);
             overflow: hidden;
         }
 
@@ -42,7 +41,7 @@
         .modal-background {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('fondo-modal.png'); /* Tu onda roja aquí */
+            background-image: url('fondo-modal.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -67,35 +66,39 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            border: 3px solid #ff0000; /* Rojo */
-            box-shadow: 0 0 15px #ff0000;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
         }
 
         .modal-header h1 {
             margin: 0;
             font-size: 28px;
             font-weight: 900;
-            color: #ff0000; /* Rojo brillante */
-            text-shadow: 0 0 10px #ff0000;
+            color: #ff0000;
+            text-shadow: 
+                0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 30px #ff0000; /* Glow más fuerte para que se vea perfecto */
         }
 
         .modal-header p {
             margin: 5px 0 0;
             font-size: 18px;
             font-weight: 700;
-            color: #ffffff; /* Blanco puro */
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.5); /* Sutil glow blanco para más visibilidad */
         }
 
         .changes {
-            background-color: rgba(34, 34, 34, 0.7);
+            background-color: rgba(10, 10, 10, 0.85); /* Más oscuro para contraste */
             margin: 20px 0;
             padding: 15px 20px;
             border-radius: 12px;
             font-size: 18px;
             font-weight: 700;
-            color: #ffffff; /* Letras blancas */
+            color: #ffffff; /* Blanco puro */
             border: 2px solid white;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .changes li {
@@ -103,17 +106,17 @@
         }
 
         .description {
-            background-color: rgba(26, 26, 26, 0.7);
+            background-color: rgba(10, 10, 10, 0.85); /* Más oscuro */
             margin: 20px 0;
             padding: 20px;
             border-radius: 12px;
             font-size: 16px;
-            line-height: 1.4; /* Menos espacio entre líneas para que quede más ordenado */
+            line-height: 1.5; /* Ordenado y legible */
             text-align: center;
             font-weight: 500;
-            color: #ffffff; /* Letras blancas */
+            color: #ffffff; /* Blanco puro */
             border: 2px solid white;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .buttons {
@@ -143,13 +146,13 @@
         }
 
         .update {
-            background: linear-gradient(to right, #ff0000, #ff4444); /* Gradiente rojo */
+            background: linear-gradient(to right, #ff0000, #ff4444);
             color: white;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
         }
 
         .update:hover {
-            box-shadow: 0 0 35px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 1);
             transform: scale(1.05);
         }
     </style>
@@ -163,7 +166,7 @@
                 <div class="modal-header">
                     <img src="logo.png" alt="Logo">
                     <div>
-                        <h1>UPDATE AVAILABLE</h1> <!-- Todo en una línea -->
+                        <h1>UPDATE AVAILABLE</h1>
                         <p>New Version 2.0</p>
                     </div>
                 </div>
