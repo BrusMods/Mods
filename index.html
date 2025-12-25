@@ -13,41 +13,38 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Aquí pondrás tu imagen de fondo */
-            background-image: url('tu-fondo.jpg'); /* ← Cambia esto por tu imagen */
+            /* Aquí pones tu imagen de fondo con la onda púrpura */
+            background-image: url('tu-fondo.jpg'); /* ← Cambia por tu imagen */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         dialog {
-            background: transparent; /* Fondo del modal transparente */
+            background: transparent; /* Totalmente transparente */
             border: none;
             border-radius: 20px;
-            padding: 0;
-            width: 400px;
+            padding: 20px; /* Espacio para que el glow no se corte */
+            width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 40px rgba(138, 43, 226, 0.9); /* Glow/contorno púrpura neon más fuerte */
-            overflow: hidden;
+            box-shadow: 0 0 50px rgba(138, 43, 226, 1); /* Glow/contorno púrpura fuerte */
+            overflow: visible;
             color: white;
         }
 
         dialog::backdrop {
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscurecido detrás del modal */
+            background-color: rgba(0, 0, 0, 0.6); /* Oscurece el fondo detrás */
         }
 
         .modal-content {
-            background: rgba(17, 17, 17, 0.95); /* Fondo oscuro semi-transparente para el contenido */
-            border-radius: 20px;
-            overflow: hidden;
+            background: transparent; /* Sin fondo sólido */
         }
 
         .modal-header {
-            background: linear-gradient(to right, rgba(17, 17, 17, 0.95), rgba(34, 34, 34, 0.95));
-            padding: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
+            padding-bottom: 10px;
         }
 
         .modal-header img {
@@ -68,39 +65,41 @@
         .modal-header p {
             margin: 5px 0 0;
             font-size: 18px;
-            color: #bbb;
+            color: #ccc;
         }
 
         .changes {
-            background-color: rgba(34, 34, 34, 0.8);
-            margin: 20px;
-            padding: 15px;
+            background-color: rgba(30, 30, 40, 0.6);
+            margin: 20px 0;
+            padding: 15px 20px;
             border-radius: 12px;
             font-size: 18px;
+            backdrop-filter: blur(5px); /* Efecto vidrio esmerilado opcional */
         }
 
         .changes li {
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         .description {
-            margin: 20px;
+            background-color: rgba(20, 20, 30, 0.6);
+            margin: 20px 0;
             padding: 20px;
-            background-color: rgba(26, 26, 26, 0.8);
             border-radius: 12px;
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .buttons {
             display: flex;
             justify-content: space-between;
-            padding: 20px;
+            padding-top: 10px;
         }
 
         .buttons button {
-            padding: 12px 30px;
+            padding: 12px 32px;
             font-size: 18px;
             border: none;
             border-radius: 30px;
@@ -111,7 +110,7 @@
         .later {
             background-color: transparent;
             color: white;
-            border: 2px solid #555;
+            border: 2px solid #666;
         }
 
         .later:hover {
@@ -121,11 +120,11 @@
         .update {
             background: linear-gradient(to right, #8a2be2, #ff00ff);
             color: white;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
         }
 
         .update:hover {
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.9);
+            box-shadow: 0 0 35px rgba(138, 43, 226, 1);
             transform: scale(1.05);
         }
     </style>
@@ -135,7 +134,7 @@
     <dialog id="updateModal">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="logo.png" alt="Logo"> <!-- Tu logo aquí -->
+                <img src="logo.png" alt="Logo">
                 <div>
                     <h1>UPDATE AVAILABLE</h1>
                     <p>New Version 2.0</p>
@@ -161,7 +160,6 @@
     </dialog>
 
     <script>
-        // Abre el modal al cargar la página (puedes cambiarlo)
         document.getElementById('updateModal').showModal();
     </script>
 
