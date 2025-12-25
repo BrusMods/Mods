@@ -1,80 +1,133 @@
---[[
-  Menú visual estilo BRUSMODS
-  Fondo negro, partículas rojas, botones transparentes con borde rojo
-  Solo visual, sin funcionalidad real
-]]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>BRUS MOD MENU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
--- Crear ventana/menu
-local menu = createUI("BRUSMODS Menu")
-menu:setSize(800, 600)
-menu:setBackgroundColor(0, 0, 0, 180) -- fondo negro semitransparente
-
--- Función para partículas rojas en fondo
-local particles = {}
-for i = 1, 120 do
-    table.insert(particles, {
-        x = math.random(0, 800),
-        y = math.random(0, 600),
-        vx = math.random() * 2 - 1,
-        vy = math.random() * 2 - 1,
-        life = math.random(50, 150)
-    })
-end
-
-function menu:onDraw()
-    -- Dibujar partículas
-    for i, p in ipairs(particles) do
-        drawCircle(p.x, p.y, 2, {1,0,0,1}) -- rojo
-        p.x = p.x + p.vx
-        p.y = p.y + p.vy
-        p.life = p.life - 1
-        if p.life <= 0 or p.x < 0 or p.x > 800 or p.y < 0 or p.y > 600 then
-            p.x = math.random(0, 800)
-            p.y = math.random(0, 600)
-            p.life = math.random(50, 150)
-            p.vx = math.random() * 2 - 1
-            p.vy = math.random() * 2 - 1
-        end
-    end
-end
-
--- Crear pestañas
-local tabs = {"Inicio", "Mods VIP", "Herramientas", "Canal WhatsApp"}
-local currentTab = "Inicio"
-
-for _, tabName in ipairs(tabs) do
-    menu:addButton(tabName, function()
-        currentTab = tabName
-    end)
-end
-
--- Crear botones dentro de cada tab (solo visual)
-local buttons = {
-    ["Inicio"] = {"Ver Mods"},
-    ["Mods VIP"] = {"Entrar"},
-    ["Herramientas"] = {"Ver"},
-    ["Canal WhatsApp"] = {"Canal"}
+<style>
+body{
+  margin:0;
+  background:#0b0f14;
+  font-family: Arial, sans-serif;
 }
 
-menu:onUpdate(function()
-    -- dibujar botones del tab actual
-    local y = 200
-    for _, btnName in ipairs(buttons[currentTab] or {}) do
-        drawButton(btnName, 300, y, 200, 50, {0,0,0,0}, {1,0,0,1}) -- fondo transparente, borde rojo
-        y = y + 70
-    end
-end)
+/* BOTÓN FLOTANTE */
+#openBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#ff004c;
+  color:white;
+  font-size:30px;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 15px #ff004c;
+}
 
--- Botón de música (solo visual)
-menu:addButton("Música: ON", function()
-    -- solo cambia el texto, no reproduce música
-    local btn = menu:getButton("Música: ON") or menu:getButton("Música: OFF")
-    if btn.text == "Música: ON" then
-        btn.text = "Música: OFF"
-    else
-        btn.text = "Música: ON"
-    end
-end)
+/* PANEL */
+#menu{
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  width:260px;
+  background:#121821;
+  border-radius:15px;
+  box-shadow:0 0 25px #000;
+  display:none;
+  overflow:hidden;
+}
 
--- Mostrar menú
-menu:show()
+#menu header{
+  background:#ff004c;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  border-bottom:1px solid #1f2937;
+  color:white;
+}
+
+/* TOGGLE */
+.switch{
+  width:42px;
+  height:22px;
+  background:#444;
+  border-radius:20px;
+  position:relative;
+  cursor:pointer;
+}
+.switch::before{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:white;
+  border-radius:50%;
+  top:2px;
+  left:2px;
+  transition:0.2s;
+}
+.switch.active{
+  background:#00ff88;
+}
+.switch.active::before{
+  left:22px;
+}
+</style>
+</head>
+
+<body>
+
+<button id="openBtn">≡</button>
+
+<div id="menu">
+  <header>🔥 BRUS MOD MENU 🔥</header>
+
+  <div class="item">
+    Wallhack
+    <div class="switch"></div>
+  </div>
+
+  <div class="item">
+    Aimbot
+    <div class="switch"></div>
+  </div>
+
+  <div class="item">
+    No Recoil
+    <div class="switch"></div>
+  </div>
+
+  <div class="item">
+    Speed
+    <div class="switch"></div>
+  </div>
+</div>
+
+<script>
+const btn = document.getElementById("openBtn");
+const menu = document.getElementById("menu");
+
+btn.onclick = () => {
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+};
+
+document.querySelectorAll(".switch").forEach(sw=>{
+  sw.onclick = () => {
+    sw.classList.toggle("active");
+  };
+});
+</script>
+
+</body>
+</html>
