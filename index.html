@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Available Modal - Rojo Neon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <title>Update Available Modal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -24,7 +24,7 @@
             padding: 0;
             width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.9);
             overflow: hidden;
         }
 
@@ -41,9 +41,9 @@
         .modal-background {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('fondo-modal.png');
+            background-image: url('fondo-modal.png'); /* Tu onda púrpura */
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-repeat: no-repeat;
             opacity: 1;
             z-index: 1;
@@ -52,52 +52,47 @@
         .modal-content {
             position: relative;
             z-index: 2;
-            padding: 25px 20px;
+            padding: 20px;
         }
 
         .modal-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .modal-header img {
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 4px solid #ff0000;
-            box-shadow: 0 0 25px #ff0000;
+            border: 3px solid #8a2be2;
+            box-shadow: 0 0 15px #8a2be2;
         }
 
         .modal-header h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
-            color: #ff0000;
-            text-shadow: 
-                0 0 15px #ff0000,
-                0 0 30px #ff0000,
-                0 0 45px #ff0000; /* Glow super fuerte para visibilidad total */
+            color: #ff00ff;
+            text-shadow: 0 0 12px #ff00ff;
         }
 
         .modal-header p {
-            margin: 8px 0 0;
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.6);
+            margin: 5px 0 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #ddd;
         }
 
         .changes {
-            background-color: rgba(0, 0, 0, 0.6); /* Muy oscuro/transparente para que la onda se vea */
+            background-color: rgba(30, 30, 30, 0.8);
             margin: 20px 0;
-            padding: 20px;
+            padding: 18px 22px;
             border-radius: 15px;
-            font-size: 19px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 500;
             color: #ffffff;
-            border: 3px solid white;
         }
 
         .changes li {
@@ -105,51 +100,51 @@
         }
 
         .description {
-            background-color: rgba(0, 0, 0, 0.6);
-            margin: 25px 0 30px;
-            padding: 25px;
+            background-color: rgba(30, 30, 30, 0.8);
+            margin: 20px 0;
+            padding: 22px;
             border-radius: 15px;
-            font-size: 17px;
-            line-height: 1.5; /* Ordenado perfecto */
+            font-size: 16px;
+            line-height: 1.6;
             text-align: center;
-            font-weight: 500;
+            font-weight: 400;
             color: #ffffff;
-            border: 3px solid white;
         }
 
         .buttons {
             display: flex;
             justify-content: space-between;
+            padding-top: 10px;
         }
 
         .buttons button {
-            padding: 14px 40px;
-            font-size: 20px;
-            font-weight: 900;
-            border-radius: 50px;
+            padding: 12px 40px;
+            font-size: 19px;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .later {
-            background-color: transparent;
+            background-color: rgba(50, 50, 50, 0.8);
             color: white;
-            border: 3px solid white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+            border: none;
         }
 
         .later:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(80, 80, 80, 0.8);
         }
 
         .update {
-            background: linear-gradient(to right, #ff0000, #ff4444);
+            background: linear-gradient(to right, #8a2be2, #ff00ff);
             color: white;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
         }
 
         .update:hover {
-            box-shadow: 0 0 45px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 35px rgba(138, 43, 226, 1);
             transform: scale(1.05);
         }
     </style>
@@ -161,7 +156,7 @@
             <div class="modal-background"></div>
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="logo.png" alt="Logo">
+                    <img src="logo.png" alt="Logo"> <!-- Tu logo anime -->
                     <div>
                         <h1>UPDATE AVAILABLE</h1>
                         <p>New Version 2.0</p>
