@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Available Modal - Rojo Neon</title>
-    <!-- Roboto bold para font futurista y limpio como en dialogs modernos -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
@@ -21,11 +20,11 @@
         dialog {
             background: transparent;
             border: none;
-            border-radius: 28px; /* Más redondeado como en la imagen */
+            border-radius: 28px;
             padding: 0;
             width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 1); /* Glow rojo fuerte alrededor */
+            box-shadow: 0 0 60px rgba(255, 0, 0, 1);
             overflow: hidden;
         }
 
@@ -42,9 +41,9 @@
         .modal-background {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('fondo-modal.png'); /* ← Tu onda roja aquí (guárdala como fondo-modal.png) */
-            background-size: cover;
-            background-position: center;
+            background-image: url('fondo-modal.png'); /* Tu onda roja */
+            background-size: contain; /* ← Ahora NO se estira, mantiene proporción */
+            background-position: center center; /* Centrada perfecta */
             background-repeat: no-repeat;
             opacity: 1;
             z-index: 1;
@@ -53,7 +52,7 @@
         .modal-content {
             position: relative;
             z-index: 2;
-            padding: 30px 25px; /* Más padding como en la imagen */
+            padding: 30px 25px;
         }
 
         .modal-header {
@@ -75,7 +74,7 @@
             margin: 0;
             font-size: 32px;
             font-weight: 900;
-            color: #ff0000; /* Rojo brillante */
+            color: #ff0000;
             text-shadow: 0 0 15px #ff0000;
         }
 
@@ -83,7 +82,7 @@
             margin: 8px 0 0;
             font-size: 20px;
             font-weight: 500;
-            color: #ffffff; /* Blanco puro */
+            color: #ffffff;
         }
 
         .changes {
@@ -93,8 +92,8 @@
             border-radius: 20px;
             font-size: 19px;
             font-weight: 500;
-            color: #dddddd; /* Gris claro / casi blanco */
-            border: 3px solid white; /* Borde blanco grueso */
+            color: #dddddd;
+            border: 3px solid white;
         }
 
         .changes li {
@@ -110,8 +109,8 @@
             line-height: 1.6;
             text-align: center;
             font-weight: 400;
-            color: #cccccc; /* Gris claro */
-            border: 3px solid white; /* Borde blanco grueso */
+            color: #cccccc;
+            border: 3px solid white;
         }
 
         .buttons {
@@ -124,7 +123,7 @@
             padding: 14px 40px;
             font-size: 20px;
             font-weight: 700;
-            border-radius: 50px; /* Más pill-shaped */
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -132,7 +131,7 @@
         .later {
             background-color: transparent;
             color: white;
-            border: 3px solid white; /* Borde blanco como en la imagen */
+            border: 3px solid white;
         }
 
         .later:hover {
