@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Available Modal - Rojo con Bordes Blancos</title>
+    <title>Update Available Modal - Rojo Neon</title>
+    <!-- Roboto bold para font futurista y limpio como en dialogs modernos -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,107 +21,110 @@
         dialog {
             background: transparent;
             border: none;
-            border-radius: 20px;
+            border-radius: 28px; /* Más redondeado como en la imagen */
             padding: 0;
             width: 420px;
             max-width: 90%;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 1); /* Glow rojo neon */
+            box-shadow: 0 0 60px rgba(255, 0, 0, 1); /* Glow rojo fuerte alrededor */
             overflow: hidden;
         }
 
         dialog::backdrop {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         .modal-wrapper {
             position: relative;
-            border-radius: 20px;
+            border-radius: 28px;
             overflow: hidden;
         }
 
         .modal-background {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('fondo-modal.png'); /* Tu onda (puede ser roja o la que tengas) */
+            background-image: url('fondo-modal.png'); /* ← Tu onda roja aquí (guárdala como fondo-modal.png) */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.9;
+            opacity: 1;
             z-index: 1;
         }
 
         .modal-content {
             position: relative;
             z-index: 2;
-            padding: 20px;
+            padding: 30px 25px; /* Más padding como en la imagen */
         }
 
         .modal-header {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .modal-header img {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            border: 3px solid #ff0000;
-            box-shadow: 0 0 15px #ff0000;
+            border: 4px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
         }
 
         .modal-header h1 {
             margin: 0;
-            font-size: 28px;
-            color: #ff0000;
-            text-shadow: 0 0 10px #ff0000;
+            font-size: 32px;
+            font-weight: 900;
+            color: #ff0000; /* Rojo brillante */
+            text-shadow: 0 0 15px #ff0000;
         }
 
         .modal-header p {
-            margin: 5px 0 0;
-            font-size: 18px;
-            color: #ccc;
+            margin: 8px 0 0;
+            font-size: 20px;
+            font-weight: 500;
+            color: #ffffff; /* Blanco puro */
         }
 
-        /* Cuadro de cambios con borde blanco */
         .changes {
-            background-color: rgba(34, 34, 34, 0.7);
+            background-color: rgba(20, 20, 20, 0.8);
             margin: 20px 0;
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-size: 18px;
-            border: 2px solid white; /* ← Contorno blanco */
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Opcional: glow suave blanco */
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 19px;
+            font-weight: 500;
+            color: #dddddd; /* Gris claro / casi blanco */
+            border: 3px solid white; /* Borde blanco grueso */
         }
 
         .changes li {
-            margin: 10px 0;
+            margin: 12px 0;
         }
 
-        /* Cuadro de descripción con borde blanco */
         .description {
-            background-color: rgba(26, 26, 26, 0.7);
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            line-height: 1.5;
+            background-color: rgba(20, 20, 20, 0.8);
+            margin: 30px 0 20px;
+            padding: 25px;
+            border-radius: 20px;
+            font-size: 17px;
+            line-height: 1.6;
             text-align: center;
-            border: 2px solid white; /* ← Contorno blanco */
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Opcional: glow suave */
+            font-weight: 400;
+            color: #cccccc; /* Gris claro */
+            border: 3px solid white; /* Borde blanco grueso */
         }
 
         .buttons {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             padding-top: 10px;
         }
 
         .buttons button {
-            padding: 12px 35px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
+            padding: 14px 40px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 50px; /* Más pill-shaped */
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -127,7 +132,7 @@
         .later {
             background-color: transparent;
             color: white;
-            border: 2px solid #666;
+            border: 3px solid white; /* Borde blanco como en la imagen */
         }
 
         .later:hover {
@@ -135,14 +140,15 @@
         }
 
         .update {
-            background: linear-gradient(to right, #ff0000, #ff4444);
+            background: linear-gradient(to right, #ff0000, #ff3333);
             color: white;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+            border: none;
         }
 
         .update:hover {
-            box-shadow: 0 0 35px rgba(255, 0, 0, 1);
-            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 1);
+            transform: scale(1.08);
         }
     </style>
 </head>
